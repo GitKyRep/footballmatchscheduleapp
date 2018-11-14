@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Football Match Schedule</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="prevMatch">Prev Match</string>
+    <string name="nextMatch">Next Match</string>
+    <string name="favMatch">Favorites</string>
+    <string name="leagueId">4328</string>
+    <string name="url">url</string>
+    <string name="last">last</string>
+    <string name="next">next</string>
+</resources>
