@@ -36,12 +36,14 @@ class FavoriteEventAdapter(private val context: Context, private val favorite: L
             //Menerapkan Kotlin Android Extensions (View)
 
             val tanggalEvent = getLongDate(favorite.dateEvent)
+            val waktuEvent = favorite.timeEvent
             val home = ellipsize(favorite.homeTeam, 14)
             val away = ellipsize(favorite.awayTeam, 14)
 
             strHomeTeam.text = home
             strAwayTeam.text = away
             dateEvent.text = tanggalEvent
+            timeEvent.text = waktuEvent
             intHomeScore.text = favorite.homeScore
             intAwayScore.text = favorite.awayScore
 

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="dateEvent" type="id" />
-    <item name="strHomeTeam" type="id" />
-    <item name="strAwayTeam" type="id" />
-    <item name="intAwayScore" type="id" />
-    <item name="intHomeScore" type="id" />
     <item name="listFav" type="id" />
     <item name="swipeId" type="id" />
+    <item name="team_badge" type="id" />
+    <item name="team_name" type="id" />
+    <item name="spinnerLeague" type="id" />
+    <item name="list_team" type="id" />
 </resources>

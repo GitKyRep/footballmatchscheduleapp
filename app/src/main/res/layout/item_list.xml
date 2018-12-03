@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    android:layout_width="match_parent"
+<android.support.v7.widget.CardView android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:layout_margin="10dp"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
@@ -13,10 +11,35 @@
         android:orientation="vertical"
         android:padding="16dp"
         >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            >
+            <TextView
+                android:id="@+id/dateEvent"
+                android:text="Date Event"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/strNotif"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_notifications"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+
+
 
         <TextView
-            android:id="@+id/dateEvent"
-            android:text="Date Event"
+            android:id="@+id/timeEvent"
+            android:text="Time Event"
             android:layout_gravity="center"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"

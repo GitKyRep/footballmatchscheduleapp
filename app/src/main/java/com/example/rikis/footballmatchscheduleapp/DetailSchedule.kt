@@ -20,6 +20,8 @@ import com.example.rikis.footballmatchscheduleapp.presenter.EventDetailPresenter
 import com.example.rikis.footballmatchscheduleapp.presenter.TeamPresenter
 import com.example.rikis.footballmatchscheduleapp.utils.database
 import com.example.rikis.footballmatchscheduleapp.utils.getLongDate
+import com.example.rikis.footballmatchscheduleapp.utils.getStrDate
+import com.example.rikis.footballmatchscheduleapp.utils.toGMTFormat
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_schedule.*
@@ -28,6 +30,7 @@ import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.design.snackbar
+import java.text.SimpleDateFormat
 
 
 class DetailSchedule : AppCompatActivity(), TeamView, EventDetailView {
@@ -37,6 +40,7 @@ class DetailSchedule : AppCompatActivity(), TeamView, EventDetailView {
     private lateinit var events: Event
     private lateinit var presenter: TeamPresenter
     private lateinit var presenterDetail: EventDetailPresenter
+    private lateinit var waktuEvent:String
 
     //manggil presenter
     private val request = ApiRepository()
@@ -86,12 +90,15 @@ class DetailSchedule : AppCompatActivity(), TeamView, EventDetailView {
 
     private fun addToFavorite() {
         try {
+            waktuEvent = SimpleDateFormat("HH:mm").format(toGMTFormat(getStrDate(events.dateEvent.toString()),events.strTime.toString()));
+            //Log.e("TAG","response waktu = "+waktuEvent +"=="+toGMTFormat(getStrDate(events.dateEvent.toString()),events.strTime.toString()))
             database.use {
                 insert(FavoritesEvent.TABLE_FAVORITE,
                         FavoritesEvent.EVENT_ID to events.idEvent,
                         FavoritesEvent.HOME_TEAM to events.strHomeTeam,
                         FavoritesEvent.AWAY_TEAM to events.strAwayTeam,
                         FavoritesEvent.DATE_EVENT to events.dateEvent,
+                        FavoritesEvent.TIME_EVENT to waktuEvent,
                         FavoritesEvent.HOME_SCORE to events.intHomeScore,
                         FavoritesEvent.AWAY_SCORE to events.intAwayScore)
             }
@@ -145,7 +152,10 @@ class DetailSchedule : AppCompatActivity(), TeamView, EventDetailView {
         events = Event(data[0].idEvent,
                 data[0].strHomeTeam,
                 data[0].strAwayTeam,
+                data[0].strSport,
                 data[0].dateEvent,
+                data[0].strDate,
+                data[0].strTime,
                 data[0].intHomeScore,
                 data[0].intAwayScore,
                 data[0].strHomeGoalDetails,
@@ -166,7 +176,11 @@ class DetailSchedule : AppCompatActivity(), TeamView, EventDetailView {
                 data[0].idAwayTeam)
 
         val tanggalEvent = getLongDate(data[0].dateEvent)
+        waktuEvent = SimpleDateFormat("HH:mm").format(toGMTFormat(getStrDate(data[0].dateEvent.toString()),data[0].strTime.toString()));
+        //Log.e("TAG","waktu = "+toGMTFormat(getStrDate(data[0].dateEvent.toString()),data[0].strTime.toString()))
+
         dateEvent.text = tanggalEvent
+        timeEvent.text = waktuEvent
         strHomeTeam.text = if (data[0].strHomeTeam.equals("null")) "" else data[0].strHomeTeam
         strAwayTeam.text = if (data[0].strAwayTeam.equals("null")) "" else data[0].strAwayTeam
         intHomeScore.text = if (data[0].intHomeScore.equals("null")) "" else data[0].intHomeScore

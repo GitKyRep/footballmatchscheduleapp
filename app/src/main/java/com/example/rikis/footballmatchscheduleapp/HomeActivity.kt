@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.example.rikis.footballmatchscheduleapp.R.id.*
 import kotlinx.android.synthetic.main.activity_home.*
 
+
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,39 +14,39 @@ class HomeActivity : AppCompatActivity() {
 
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                prevMatch -> {
-                    loadPrevMatchFragment(savedInstanceState)
+                matches -> {
+                    loadMatchFragment(savedInstanceState)
                 }
-                nextMatch -> {
-                    loadNextMatchFragment(savedInstanceState)
+                teams -> {
+                    loadTeamFragment(savedInstanceState)
                 }
                 favMatch -> {
-                    loadFavMatchFragment(savedInstanceState)
+                    loadFavorites(savedInstanceState)
                 }
             }
             true
         }
-        bottom_navigation.selectedItemId = prevMatch
+        bottom_navigation.selectedItemId = matches
 
     }
 
-    private fun loadPrevMatchFragment(savedInstanceState: Bundle?) {
+    private fun loadMatchFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            val mFragmentLast = FragSchedule()
+            val mFragmentMatches = Matches()
             val mArgsLast = Bundle()
             mArgsLast.putString(getString(R.string.url),getString(R.string.last))
-            mFragmentLast.arguments = mArgsLast
+            mFragmentMatches.arguments = mArgsLast
 
             supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.main_container, mFragmentLast, mFragmentLast::class.java.simpleName)
+                    .replace(R.id.main_container, mFragmentMatches, mFragmentMatches::class.java.simpleName)
                     .commit()
         }
     }
 
-    private fun loadNextMatchFragment(savedInstanceState: Bundle?) {
+    private fun loadTeamFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            val mFragmentNext = FragSchedule()
+            val mFragmentNext = FragTeams()
             val mArgsNext = Bundle()
             mArgsNext.putString(getString(R.string.url),getString(R.string.next))
             mFragmentNext.arguments = mArgsNext
@@ -57,11 +58,11 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadFavMatchFragment(savedInstanceState: Bundle?) {
+    private fun loadFavorites(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.main_container, FragFavoriteEvent(), FragFavoriteEvent::class.java.simpleName)
+                    .replace(R.id.main_container, FragFavorites(), FragFavorites::class.java.simpleName)
                     .commit()
         }
     }

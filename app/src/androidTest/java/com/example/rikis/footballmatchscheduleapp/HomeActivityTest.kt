@@ -38,7 +38,7 @@ class HomeActivityTest {
 
         Espresso.onView(ViewMatchers.withId(bottom_navigation))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        Espresso.onView(ViewMatchers.withId(nextMatch)).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withId(teams)).perform(ViewActions.click())
         Thread.sleep(5000)
         Espresso.onView(ViewMatchers.withId(listEvent)).perform(
                 RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, ViewActions.click()))
