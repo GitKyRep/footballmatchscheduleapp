@@ -46,16 +46,8 @@ class Matches : Fragment() {
 
         val adapter = MyViewPagerAdapter(childFragmentManager)
 
-        val mFragmentLast = FragSchedule()
-        val mArgsLast = Bundle()
-        mArgsLast.putString("url", "last")
-        mFragmentLast.setArguments(mArgsLast)
-
-        val mFragmentNext= FragSchedule()
-        val mArgsNext = Bundle()
-        mArgsNext.putString("url", "next")
-        mFragmentNext.setArguments(mArgsNext)
-
+        val mFragmentLast = FragLastSchedule()
+        val mFragmentNext= FragNextSchedule()
 
         adapter.addFragment(mFragmentLast,"Last Schedule")
         adapter.addFragment(mFragmentNext,"Next Schedule")

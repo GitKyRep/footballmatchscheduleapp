@@ -90,7 +90,18 @@ class DetailSchedule : AppCompatActivity(), TeamView, EventDetailView {
 
     private fun addToFavorite() {
         try {
-            waktuEvent = SimpleDateFormat("HH:mm").format(toGMTFormat(getStrDate(events.dateEvent.toString()),events.strTime.toString()));
+
+            waktuEvent = "-"
+            events?.let {
+                if(events.strTime.toString().isNullOrBlank() && events.dateEvent.toString().isNullOrBlank() ){
+                    waktuEvent = "-"
+                }else{
+                    waktuEvent = SimpleDateFormat("HH:mm").format(toGMTFormat(getStrDate(events.dateEvent.toString()),events.strTime.toString()))
+                }
+            }
+
+
+
             //Log.e("TAG","response waktu = "+waktuEvent +"=="+toGMTFormat(getStrDate(events.dateEvent.toString()),events.strTime.toString()))
             database.use {
                 insert(FavoritesEvent.TABLE_FAVORITE,
@@ -152,7 +163,6 @@ class DetailSchedule : AppCompatActivity(), TeamView, EventDetailView {
         events = Event(data[0].idEvent,
                 data[0].strHomeTeam,
                 data[0].strAwayTeam,
-                data[0].strSport,
                 data[0].dateEvent,
                 data[0].strDate,
                 data[0].strTime,
@@ -173,12 +183,21 @@ class DetailSchedule : AppCompatActivity(), TeamView, EventDetailView {
                 data[0].strHomeLineupSubstitutes,
                 data[0].strAwayLineupSubstitutes,
                 data[0].idHomeTeam,
-                data[0].idAwayTeam)
+                data[0].idAwayTeam,
+                data[0].strEvent,
+                data[0].strSport)
 
-        val tanggalEvent = getLongDate(data[0].dateEvent)
-        waktuEvent = SimpleDateFormat("HH:mm").format(toGMTFormat(getStrDate(data[0].dateEvent.toString()),data[0].strTime.toString()));
+        waktuEvent = "-"
+        data?.let {
+            if(data[0].strTime.toString().isNullOrBlank() && data[0].dateEvent.toString().isNullOrBlank() ){
+                waktuEvent = "-"
+            }else{
+                waktuEvent = SimpleDateFormat("HH:mm").format(toGMTFormat(getStrDate(data[0].dateEvent.toString()),data[0].strTime.toString()))
+            }
+        }
+
         //Log.e("TAG","waktu = "+toGMTFormat(getStrDate(data[0].dateEvent.toString()),data[0].strTime.toString()))
-
+        val tanggalEvent = getLongDate(data[0].dateEvent)
         dateEvent.text = tanggalEvent
         timeEvent.text = waktuEvent
         strHomeTeam.text = if (data[0].strHomeTeam.equals("null")) "" else data[0].strHomeTeam

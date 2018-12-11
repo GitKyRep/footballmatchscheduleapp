@@ -37,8 +37,8 @@ class SearchMatchPresenterTest {
 
     @Test
     fun getSearchEventList() {
-        val Event: MutableList<Event> = mutableListOf()
-        val response = SearchEventResponse(Event)
+        val eventList: MutableList<Event> = mutableListOf()
+        val response = SearchEventResponse(eventList)
         val namaEvent = "barcelona"
 
         Mockito.`when`(gson.fromJson(apiRepository
@@ -48,7 +48,7 @@ class SearchMatchPresenterTest {
 
         presenter.getSearchEventList(namaEvent)
         Thread.sleep(5000)
-        Mockito.verify(viewSearchMatch).showEvent(Event)
+        Mockito.verify(viewSearchMatch).showEvent(eventList)
 
     }
 }

@@ -1,7 +1,5 @@
 package com.example.rikis.footballmatchscheduleapp.presenter
 
-import com.example.rikis.footballmatchscheduleapp.FragSchedule
-import com.example.rikis.footballmatchscheduleapp.R
 import com.example.rikis.footballmatchscheduleapp.api.ApiRepository
 import com.example.rikis.footballmatchscheduleapp.api.TheSportDbApi
 import com.example.rikis.footballmatchscheduleapp.data.Event
@@ -12,10 +10,8 @@ import com.google.gson.Gson
 import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
 class GetNextEventListTest {

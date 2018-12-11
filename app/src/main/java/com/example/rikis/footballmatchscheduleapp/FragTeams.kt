@@ -23,7 +23,10 @@ import com.example.rikis.footballmatchscheduleapp.utils.visible
 import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.support.v4.*
+import org.jetbrains.anko.support.v4.alert
+import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.support.v4.intentFor
+import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
 class FragTeams : Fragment(), AnkoComponent<Context>, ListTeamsView,LeagueView {
 
@@ -77,9 +80,9 @@ class FragTeams : Fragment(), AnkoComponent<Context>, ListTeamsView,LeagueView {
         presenterLeague = LeaguePresenter(this, request, gson)
         presenterLeague.getAllLeague()
 
-        swipeRefresh.onRefresh {
+        /*swipeRefresh.onRefresh {
             presenter.getTeamList(leagueName)
-        }
+        }*/
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -147,7 +150,7 @@ class FragTeams : Fragment(), AnkoComponent<Context>, ListTeamsView,LeagueView {
         spinnerLeague.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val liga = parent.getItemAtPosition(position) as League
-                val leagueId: String = liga.idLeague
+                leagueId = liga.idLeague
                 val idCup: String = liga.idCup
                 //leagueName = spinnerLeague.selectedItem.toString()
                 if(idCup.equals("0")){

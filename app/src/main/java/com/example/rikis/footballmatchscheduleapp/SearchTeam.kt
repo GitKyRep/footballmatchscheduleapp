@@ -58,9 +58,9 @@ class SearchTeam : AppCompatActivity(),ListTeamsView {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                if (query != null) {
+                if (!query.equals(null)) {
                     if (query.length > 1) {
-                        namaTeam= query.toString()
+                        namaTeam= query
                         presenter.getSearchTeam(namaTeam)
                         Log.e("TAG","response search : "+namaTeam)
                     }
@@ -71,10 +71,10 @@ class SearchTeam : AppCompatActivity(),ListTeamsView {
             }
 
             override fun onQueryTextChange(query: String): Boolean {
-                if (query != null) {
+                if (!query.equals(null)) {
                     if (query.length > 1) {
 
-                        namaTeam = query.toString()
+                        namaTeam = query
                         presenter.getSearchTeam(namaTeam)
                         Log.e("TAG","response search : "+namaTeam)
                     }

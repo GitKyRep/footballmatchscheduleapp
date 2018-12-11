@@ -135,19 +135,19 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
 
         val adapterDetailTeam = MyViewPagerAdapter(supportFragmentManager)
 
-        val FragOverview = FragOverview()
+        val fragOverview = FragOverview()
         val mArgsLast = Bundle()
         mArgsLast.putString("strDescription", data[0].teamDescription)
-        FragOverview.setArguments(mArgsLast)
+        fragOverview.setArguments(mArgsLast)
 
-        val FragPlayers= FragPlayers()
+        val fragPlayers= FragPlayers()
         val mArgsNext = Bundle()
         mArgsNext.putString("idTeam",data[0].teamId)
-        FragPlayers.setArguments(mArgsNext)
+        fragPlayers.setArguments(mArgsNext)
 
 
-        adapterDetailTeam.addFragment(FragOverview,"Overview")
-        adapterDetailTeam.addFragment(FragPlayers,"Players")
+        adapterDetailTeam.addFragment(fragOverview,"Overview")
+        adapterDetailTeam.addFragment(fragPlayers,"Players")
 
         viewPagerTeam.adapter = adapterDetailTeam
         tabsTeam.setupWithViewPager(viewPagerTeam)

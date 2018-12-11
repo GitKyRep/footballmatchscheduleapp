@@ -51,9 +51,9 @@ class SearchMatches : AppCompatActivity(), MainView {
         })
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                if (query != null) {
+                if (!query.equals(null)) {
                     if (query.length > 1) {
-                        namaEvent = query.toString()
+                        namaEvent = query
                         presenterSearch.getSearchEventList(namaEvent)
 
                     }
@@ -64,10 +64,10 @@ class SearchMatches : AppCompatActivity(), MainView {
             }
 
             override fun onQueryTextChange(query: String): Boolean {
-                if (query != null) {
+                if (!query.equals(null)) {
                     if (query.length > 1) {
                         //Log.e("TAG","response search : "+query.toString())
-                        namaEvent = query.toString()
+                        namaEvent = query
                         presenterSearch.getSearchEventList(namaEvent)
                     }
                 }
@@ -107,7 +107,7 @@ class SearchMatches : AppCompatActivity(), MainView {
     override fun showEvent(data: List<Event>) {
         events.clear()
         val list = data
-        if(list!=null) {
+        if(!list.equals(null)) {
             for (item in list) {
                 if (item.strSport.equals("Soccer")){
                     Log.e("TAG","Response "+item)

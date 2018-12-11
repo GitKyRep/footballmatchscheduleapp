@@ -2,8 +2,11 @@
 <resources>
     <item name="listFav" type="id" />
     <item name="swipeId" type="id" />
+    <item name="swipeFavTeam" type="id" />
     <item name="team_badge" type="id" />
     <item name="team_name" type="id" />
     <item name="spinnerLeague" type="id" />
     <item name="list_team" type="id" />
+    <item name="listFavTeam" type="id" />
+
 </resources>

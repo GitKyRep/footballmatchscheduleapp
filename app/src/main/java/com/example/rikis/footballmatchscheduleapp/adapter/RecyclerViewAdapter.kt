@@ -39,7 +39,7 @@ class RecyclerViewAdapter(private val context: Context, private val items: List<
             val waktuEvent :String
 
             if(!strTime.equals("null")){
-                waktuEvent = SimpleDateFormat("HH:mm").format(toGMTFormat(tglEvent,strTime));
+                waktuEvent = SimpleDateFormat("HH:mm").format(toGMTFormat(tglEvent,strTime))
             }else{
                 waktuEvent="-"
             }
