@@ -32,7 +32,7 @@ class FragNextSchedule : Fragment(), MainView, LeagueView {
     private lateinit var presenter: MainPresenter
     private lateinit var presenterLeague: LeaguePresenter
     private lateinit var adapterEvent: RecyclerViewAdapter
-    private lateinit var leagueId: String
+    //private lateinit var leagueId: String
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -116,7 +116,7 @@ class FragNextSchedule : Fragment(), MainView, LeagueView {
 
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val liga = parent.getItemAtPosition(position) as League
-                val leagueId: String = liga.idLeague
+                val leagueId: String? = liga.idLeague
                 presenter.getNextEventList(leagueId)
             }
 

@@ -37,12 +37,12 @@ class FragTeams : Fragment(), AnkoComponent<Context>, ListTeamsView,LeagueView {
     private lateinit var listEvent: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefresh: SwipeRefreshLayout
-    private lateinit var leagueName: String
+    //private lateinit var leagueName: String
     private var leagues: MutableList<League> = mutableListOf()
     private lateinit var presenterLeague: LeaguePresenter
     private lateinit var leagueId: String
 
-    private var menuItem: Menu? = null
+    //private var menuItem: Menu? = null
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater!!.inflate(R.menu.menu_search, menu)

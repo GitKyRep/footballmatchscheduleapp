@@ -138,12 +138,12 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailView {
         val fragOverview = FragOverview()
         val mArgsLast = Bundle()
         mArgsLast.putString("strDescription", data[0].teamDescription)
-        fragOverview.setArguments(mArgsLast)
+        fragOverview.arguments = mArgsLast
 
         val fragPlayers= FragPlayers()
         val mArgsNext = Bundle()
         mArgsNext.putString("idTeam",data[0].teamId)
-        fragPlayers.setArguments(mArgsNext)
+        fragPlayers.arguments = mArgsNext
 
 
         adapterDetailTeam.addFragment(fragOverview,"Overview")

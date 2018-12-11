@@ -92,8 +92,8 @@ class DetailSchedule : AppCompatActivity(), TeamView, EventDetailView {
         try {
 
             waktuEvent = "-"
-            events?.let {
-                if(events.strTime.toString().isNullOrBlank() && events.dateEvent.toString().isNullOrBlank() ){
+            events.let {
+                if(events.strTime.toString()?.isNullOrBlank() && events.dateEvent.toString()?.isNullOrBlank() ){
                     waktuEvent = "-"
                 }else{
                     waktuEvent = SimpleDateFormat("HH:mm").format(toGMTFormat(getStrDate(events.dateEvent.toString()),events.strTime.toString()))
@@ -188,8 +188,8 @@ class DetailSchedule : AppCompatActivity(), TeamView, EventDetailView {
                 data[0].strSport)
 
         waktuEvent = "-"
-        data?.let {
-            if(data[0].strTime.toString().isNullOrBlank() && data[0].dateEvent.toString().isNullOrBlank() ){
+        data.let {
+            if(data[0].strTime.toString()?.isNullOrBlank() && data[0].dateEvent.toString()?.isNullOrBlank() ){
                 waktuEvent = "-"
             }else{
                 waktuEvent = SimpleDateFormat("HH:mm").format(toGMTFormat(getStrDate(data[0].dateEvent.toString()),data[0].strTime.toString()))

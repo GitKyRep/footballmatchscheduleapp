@@ -106,9 +106,9 @@ class SearchMatches : AppCompatActivity(), MainView {
 
     override fun showEvent(data: List<Event>) {
         events.clear()
-        val list = data
-        if(!list.equals(null)) {
-            for (item in list) {
+        ///val list = data
+        if(!data.equals(null)) {
+            for (item in data) {
                 if (item.strSport.equals("Soccer")){
                     Log.e("TAG","Response "+item)
                     events.add(item)

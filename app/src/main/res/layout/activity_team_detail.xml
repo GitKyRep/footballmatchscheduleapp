@@ -26,13 +26,14 @@
             <ImageView
                 android:id="@+id/teamBadgeTxt"
                 android:layout_width="match_parent"
+                android:contentDescription="@string/imgDesc"
                 android:layout_height="75dip" />
 
             <TextView
                 android:id="@+id/teamNameTxt"
                 android:gravity="center"
                 android:text="Nama Team"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:padding="10dp"
                 android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
